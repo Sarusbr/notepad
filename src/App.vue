@@ -1,26 +1,20 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Container></Container>
+  <GetName v-if="$store.state.popupStatus" />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Container from "./components/Container.vue"
+import GetName from "./Popups/GetName.vue"
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components:{
+    Container,
+    GetName
+  },
+  created(){
+    this.$store.dispatch("getData")
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
